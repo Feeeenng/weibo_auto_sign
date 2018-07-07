@@ -10,10 +10,10 @@ import sys
 
 from requests import session
 import re
-import os
+from config import Config
 
-USERNAME = ''  # weibo 账号
-PASSWORD = ''  # weibo 密码
+USERNAME = Config.USERNAME  # weibo 账号
+PASSWORD = Config.PASSWORD  # weibo 密码
 
 class WeiboSign():
     def __init__(self,USERNAME,PASSWORD):
@@ -98,8 +98,7 @@ class WeiboSign():
             }
             result.append(chat_dict)
         return result
-if __name__ == '__main__':
-    weibo = WeiboSign(USERNAME,PASSWORD)
-    weibo.login()
-    data = weibo.chat_sign()
-    print(data)
+
+weibo = WeiboSign(USERNAME,PASSWORD)
+weibo.login()
+sign_data = weibo.chat_sign()

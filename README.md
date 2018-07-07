@@ -7,7 +7,11 @@
 ```python
 pip install requests
 ```
-- 配置微博账号密码  在第15行
+- 脚本参数配置
+    - 微博账号密码
+    
+- 邮箱配置
+    - QQ邮箱
 
 ## 启动脚本
 ```python
@@ -16,6 +20,5 @@ python weibo.sign.py
  
  
 ### todo
-- 邮件通知
 - QQ通知
 - 微信通知

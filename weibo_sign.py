@@ -64,7 +64,7 @@ class WeiboSign():
         :return:
         '''
         datas = self.get_list_data()
-        result = []
+        chat_result = list()
         for data in datas:
             sign_url = "https://weibo.com/p/aj/general/button?api=http://i.huati.weibo.com/aj/super/checkin&id={}".format(data['id'])
             headers = {
@@ -78,8 +78,8 @@ class WeiboSign():
                     'msg':'签到成功',
                     'desc1':data['desc1']
                 }
-                result.append(sign_dict)
-        return result
+                chat_result.append(sign_dict)
+        return chat_result
     def get_list_data(self):
         '''
         解析数据
@@ -102,3 +102,4 @@ class WeiboSign():
 weibo = WeiboSign(USERNAME,PASSWORD)
 weibo.login()
 sign_data = weibo.chat_sign()
+# print(weibo.get_list_data())

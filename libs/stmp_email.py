@@ -6,10 +6,12 @@
 '''
 from __future__ import unicode_literals
 
+import time
 import smtplib
 from email.mime.text import MIMEText
 from weibo_sign import sign_data
 from config import Config
+
 
 result = []
 for data in sign_data:
@@ -17,7 +19,7 @@ for data in sign_data:
 
 result = ''.join(result)
 msg = MIMEText(result, 'html', 'utf-8')
-msg['subject'] = '签到状态'
+msg['subject'] = '{}日签到状态'.format(time.strftime("%Y-%m-%d"))
 
 # 输入 Email 地址和口令:
 from_addr = Config.from_addr

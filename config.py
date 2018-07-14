@@ -21,3 +21,6 @@ class Config:
     to_addr = ''
     # 输入 SMTP 服务器地址:
     smtp_server = 'smtp.qq.com'
+
+    #通知方式
+    send_methods = 'email'  #

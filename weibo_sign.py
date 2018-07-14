@@ -11,6 +11,7 @@ import sys
 from requests import session
 import re
 from config import Config
+from libs.stmp_email import send_email
 
 USERNAME = Config.USERNAME  # weibo 账号
 PASSWORD = Config.PASSWORD  # weibo 密码
@@ -99,7 +100,14 @@ class WeiboSign():
             result.append(chat_dict)
         return result
 
-weibo = WeiboSign(USERNAME,PASSWORD)
-weibo.login()
-sign_data = weibo.chat_sign()
+if __name__ == '__main__':
+    weibo = WeiboSign(USERNAME,PASSWORD)
+    weibo.login()
+    sign_data = weibo.chat_sign()
+    result = []
+    for data in sign_data:
+        result.append('超级话题：{} 签到状态：{} 等级：{}\n'.format(data['title_sub'], data['msg'], data['desc1']))
+    result = ''.join(result)
+    if Config.send_methods =='email':
+        send_email(result)
 # print(weibo.get_list_data())
